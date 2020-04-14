@@ -1,0 +1,53 @@
+#include<iostream>
+#include <bits/stdc++.h>
+#include<algorithm>  
+using namespace std;
+struct bstnode{
+	int data;
+	bstnode* left,*right;
+};
+bstnode* root;
+
+bstnode* create(int x){    // Here we are creating node to insert in tree
+	bstnode* temp=new bstnode();
+	temp->data=x;
+	temp->left=temp->right=NULL;
+	return(temp);
+}
+
+bstnode* insert(bstnode* head,int x){    // Here we are inserting nodes in the tree
+	bstnode* temp=head;
+	if(temp==NULL){
+		temp=create(x);
+	}
+	else if(x<temp->data){
+		temp->left=insert(temp->left,x);
+	}
+	else{
+		temp->right=insert(temp->right,x);
+	}
+	return temp;
+}
+
+//Here we are checking whether a value exists in the tree or not
+
+bool find(bstnode* root,int k){   
+	bstnode* temp=root;            
+	if(temp->data==k)return true;
+	else if(temp==NULL) return false;
+	else if(k<temp->data) return(find(temp->left,k));
+	else return(find(temp->right,k));
+}
+
+//This is the sample code to test the program
+int main(){
+	bstnode* root=NULL;
+	root=insert(root,5);
+	root=insert(root,8);
+	root=insert(root,2);
+	root=insert(root,1);
+	root=insert(root,50);
+	bool k=find(root,505);
+	cout<<k;
+	
+}
