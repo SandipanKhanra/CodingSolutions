@@ -1,2 +1,2 @@
 # CodingSolutions
-Here coding sample of various problems is available
+Here solution codes of various problems are available
